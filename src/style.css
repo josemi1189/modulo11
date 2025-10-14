@@ -12,6 +12,12 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+  --bgSuccess: #d4edda;
+  --bordeSuccess: #95c4a0;
+  --bgWarning: #F8D7DA;
+  --bordeWarning: #c28d91;
+
 }
 
 a {
@@ -37,6 +43,7 @@ h1 {
 }
 
 #app {
+  width: 25vw;
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
@@ -95,3 +102,63 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+
+
+#cuenta {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  gap: 1em;
+}
+
+#inputCuenta {
+    padding: 0.7em 1.2em;
+    border-radius: 8px;
+    font-size: 16px;
+}
+button#btnComprobar {
+    background: url(./search.svg) no-repeat;
+    background-position: center;
+    width: fit-content;
+}
+#aviso {
+  margin: 20px 0;
+  padding: 15px;
+  border-radius: 7px;
+  font-weight: bold;
+}
+.success {
+  background-color: var(--bgSuccess);
+  border: 1px solid var(--bordeSuccess);
+}
+.warning {
+  background-color: var(--bgWarning);
+  border: 1px solid var(--bordeWarning);
+}
+
+
+#datos-cuenta {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 20px;
+}
+
+
+.banco::before {
+  content: "Banco: ";
+  font-weight: bold;
+}
+.sucursal::before {
+  content: "Surcursal: ";
+  font-weight: bold;
+}
+.digito-control::before {
+  content: "Dígito de control: ";
+  font-weight: bold;
+}
+.num-cuenta::before {
+  content: "Número de cuenta: ";
+  font-weight: bold;
+}
+
