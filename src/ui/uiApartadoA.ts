@@ -1,5 +1,5 @@
-import { validaCuentaBancaria, formateaCuentaCorriente, compruebaFormato } from "../controller/motor";
-import { CuentaBancaria, bancos } from "../models/model";
+import { validaCuentaBancaria, formateaCuentaCorriente, compruebaFormato } from "../controller/motorApartadoA";
+import { CuentaBancaria, bancos } from "../models/modeloApartadoA";
 
 
 
@@ -11,7 +11,11 @@ const getNumCuenta = ():string => {
    const inputCuenta = document.getElementById("inputCuenta");
    let cuenta:string = "";
    if (inputCuenta && inputCuenta instanceof HTMLInputElement) {
-      cuenta = inputCuenta.value.replaceAll(" ","");
+      cuenta = inputCuenta.value;
+      // Elimina caracteres especiales y espacios
+      cuenta = cuenta.toUpperCase();
+      cuenta = cuenta.replace(/\s/g, ''); // Elimina espacios en blanco
+      cuenta = cuenta.replace(/[^\w\s]/g,''); // Elimina caracteres especiales
    }
    return cuenta;
 }
@@ -93,6 +97,7 @@ const handleNumCuenta = ():void => {
       muestraDatos(true, cuentaValidada);
       
     }else {
+      muestraAviso({isValid: false});
       muestraDatos(false, {isValid: false});
     }
 };
@@ -103,6 +108,5 @@ export const app = ():void => {
    if (btnComprobarCuenta && btnComprobarCuenta instanceof HTMLButtonElement) {
       btnComprobarCuenta.addEventListener("click", handleNumCuenta )
    }
-
    
 };

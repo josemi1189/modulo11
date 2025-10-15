@@ -1,5 +1,5 @@
 import * as ibantools from 'ibantools'
-import { CuentaBancaria } from '../models/model';
+import { CuentaBancaria } from '../models/modeloApartadoA';
 
 
 export const validaCuentaBancaria = (cuenta:string):CuentaBancaria => {
@@ -54,9 +54,9 @@ export const formateaCuentaCorriente = (numCuenta:string):string => {
 
 export const compruebaFormato = (cuenta:string):boolean => {
    
-   // Elimina caracteres especiales y espacios
-   cuenta = cuenta.replace(/[^A-Za-z0-9]/g, '').toUpperCase();
-   
-   const pattern = new RegExp(/^[A-Z]{2}\d{22}$/i);
-   return pattern.test(cuenta);
+  
+   const pattern = /^[A-Z]{2}\d{1,22}$/;
+   let rdo = pattern.test(cuenta);
+   console.log(rdo);
+   return rdo;
 };
